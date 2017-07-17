@@ -34,8 +34,6 @@ public class WalkActivity extends AppCompatActivity {
 
     public Cursor readAllHabits() {
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
-
-
         Cursor cursor = db.rawQuery("SELECT * FROM " + WalkContract.WalkEntry.TABLE_NAME, null);
         cursor.close();
         return cursor;
