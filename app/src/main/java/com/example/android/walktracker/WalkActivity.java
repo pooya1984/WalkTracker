@@ -29,15 +29,17 @@ public class WalkActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         insertWalk();
-        displayDatabaseInfo();
+        readAllHabits();
     }
 
-    private void displayDatabaseInfo() {
+    public Cursor readAllHabits() {
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
 
         Cursor cursor = db.rawQuery("SELECT * FROM " + WalkContract.WalkEntry.TABLE_NAME, null);
-        cursor.close();}
+        cursor.close();
+        return cursor;
+    }
 
     private void insertWalk() {
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
